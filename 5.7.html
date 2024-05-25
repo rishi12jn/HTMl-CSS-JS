@@ -1,0 +1,39 @@
+<!-- palindrome and its sum in a given range -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palindrome Sum </title>
+</head>
+<body style="background-color:powderblue">
+<h2>Palindrome Sum </h2>
+<label for="start">Start Number:</label>
+<input type="number" id="start" ><br><br>
+<label for="end">End Number:</label>
+<input type="number" id="end" ><br><br>
+<button onclick="findPalindromes()">Find Palindromes</button><br><br>
+<div id="result"></div>
+<script>
+function isPalindrome(num) {
+    const str=num.toString();
+    return str===str.split('').reverse().join('');
+}
+function findPalindromes() {
+    const start=parseInt(document.getElementById('start').value);
+    const end=parseInt(document.getElementById('end').value);
+    let sum=0;
+    let palindromes=[];
+    for (let i=start;i<=end;i++) {
+        if(isPalindrome(i)){
+            palindromes.push(i);
+            sum += i;
+        }
+    }
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML=`<p>Palindrome Numbers: ${palindromes.join(', ')}</p>`;
+    resultDiv.innerHTML+=`<p>Sum of Palindromes: ${sum}</p>`;
+}
+</script>
+</body>
+</html>

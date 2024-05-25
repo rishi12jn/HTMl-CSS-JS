@@ -1,0 +1,21 @@
+<!-- write a js program to generate a random number and display it in a textbox -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Generator</title>
+</head>
+<body style="background-color:cornflowerblue;">
+    <h1 style="text-align: center;">Random Number Generator</h1>
+    <input type="text" id="randomNumberDisplay" readonly>
+    <button onclick="generateRandomNumber()">Generate Random Number</button>
+
+    <script>
+        function generateRandomNumber() {
+            var randomNumber=Math.floor(Math.random()*1000)+1;
+            document.getElementById("randomNumberDisplay").value=randomNumber;
+        }
+    </script>
+</body>
+</html>

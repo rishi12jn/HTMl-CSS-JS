@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AngularJS Enhanced Search Filter</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="myCtrl">
+  <input type="text" ng-model="searchQuery" placeholder="Search">
+  <button ng-click="toggleSort()">Sort</button>
+  <ul>
+    <li ng-repeat="item in filteredItems = (items | filter: searchQuery | orderBy: (isSorted ? '' : 'toString()'))">
+      <span ng-bind-html="item | highlight:searchQuery"></span>
+    </li>
+  </ul>
+  <p ng-if="filteredItems.length === 0">No results found.</p>
+</div>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $sce) {
+  $scope.items = ["Apple", "Banana", "Orange", "Mango", "Grapes"];
+  $scope.isSorted = false;
+  
+  $scope.toggleSort = function() {
+    $scope.isSorted = !$scope.isSorted;
+  };
+});
+app.filter('highlight', function($sce) {
+  return function(text, search) {
+    if (!search) return $sce.trustAsHtml(text);
+    return $sce.trustAsHtml(text.replace(new RegExp(search, 'gi'), '<span class="highlight">$&</span>'));
+  };
+});
+</script>
+</body>
+</html>

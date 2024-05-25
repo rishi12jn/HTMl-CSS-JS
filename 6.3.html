@@ -1,0 +1,56 @@
+<!-- write a js to validate course registration form -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration</title>
+</head>
+<body style="background-color:darksalmon;">
+    <h1>Course Registration</h1>
+   <div style="background-color: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); max-width: 400px; width: 100%; justify-content: center;
+   align-items: center;text-align: center; margin-bottom: 20px;">
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label for="name">Student Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="phone">Phone Number:</label>
+        <input type="phone" id="phone" name="phone" required><br><br>
+        <label for="uni_name">University Name:</label>
+        <input type="uni_name" id="uni_name" name="uni_name" required><br><br>
+        <label for="course">Select Course:</label>
+        <select id="course" name="course" required>
+            <option value="">-- Please Select --</option>
+            <option value="web-development">Web Development</option>
+            <option value="FLAT">FLAT</option>
+            <option value="ADBMS">ADBMS</option>
+        </select><br><br>
+        <button type="submit">Register</button>
+    </form>
+</div>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const course = document.getElementById('course').value;
+            const uni_name = document.getElementById('uni_name').value;
+            if (name === '') {
+                alert('Please enter your name.');
+                return false;
+            }
+            if (isNaN(phone)) {
+                alert('Please enter a valid phone number.');
+                return false;
+            }
+            if (course === '') {
+                alert('Please select a course.');
+                return false;
+            }
+            if (uni_name === '') {
+                alert('Please select a university name.');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

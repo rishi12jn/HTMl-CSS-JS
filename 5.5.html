@@ -1,0 +1,39 @@
+<!-- write a js program to find odd numbers and their sum in a given range; -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odd Numbers and Their Sum</title>
+</head>
+<body style="background-color:powderblue">
+    <h2>Find Odd Nums and Sum</h2>
+    <label for="start">Start :</label>
+    <input type="number" id="start" min="1">
+    <br>
+    <label for="end">End :</label>
+    <input type="number" id="end" min="1">
+    <br>
+    <button onclick="findOddNumbersAndSum()">Find Odd Numbers & Sum</button>
+    <div id="result"></div>
+    <script>
+        function findOddNumbersAndSum() {
+            var start=document.getElementById("start").value;
+            var end=document.getElementById("end").value;
+            start=Number(start);
+            end=Number(end);
+            var oddNumbers=[];
+            var sum=0;
+            for (var i=start;i<=end;i++) {
+                if(i%2!==0){
+                    oddNumbers.push(i);
+                    sum += i;
+                }
+            }
+            var resultString="Odd numbers in the range "+start+" to "+end+" are: "+oddNumbers.join(",") + "<br>";
+            resultString+="Sum of odd numbers:"+sum;
+            document.getElementById("result").innerHTML = resultString;
+        }
+    </script>
+</body>
+</html>

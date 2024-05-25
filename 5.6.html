@@ -1,0 +1,29 @@
+<!-- write a js program to generate a random string (length of string is variable) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random String Generator</title>
+</head>
+<body style="background-color:powderblue">
+    <h2>Generate Random String</h2>
+    <label for="length">Length of String:</label>
+    <input type="number" id="length" min="1">
+    <br>
+    <button onclick="generateRandomString()">Generate</button>
+    <div id="result"></div>
+    <script>
+        function generateRandomString() {
+            var length = parseInt(document.getElementById("length").value);
+            var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345678";
+            var result = "";
+            for (var i=0;i<length;i++) {
+                var randomIndex=Math.floor(Math.random()*charset.length);
+                result+=charset[randomIndex];
+            }
+            document.getElementById("result").innerHTML="Random String: "+result;
+        }
+    </script>
+</body>
+</html>

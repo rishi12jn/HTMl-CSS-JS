@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color:blanchedalmond">
+        <div class="q1">
+            <label for="q1">Enter 3 numbers separated by space</label>
+            <input type="text" id="1" name="q1">
+            <button onclick="q1func()">Find the greatest number</button>
+            <p id="q1ans"></p>
+        </div>
+        <div class="q2">
+            <label for="q2">Enter a string</label>
+            <input type="text" id="2" name="q2">
+            <button onclick="q2func()">Convert second letter of each word to capital</button>
+            <p id="q2ans"></p>
+        </div>
+        <div class="q3">
+            <label for="q3">Enter number1, operator, number2</label>
+            <input type="text" name="q3" id="3">
+            <button onclick="q3func()">Calculate</button>
+            <p id="q3ans"></p>
+        </div>
+        <div class="q4">
+            <label for="q4">Enter a string</label>
+            <input type="text" name="q4" id="4">
+            <button onclick="q4func()">Find smallest word in the string</button>
+            <p id="q4ans"></p>
+        </div>
+        <script>
+            function q1func(){
+                let ip = document.getElementById('1').value.split(" ");
+                if (ip[0] > ip[1] & ip[0] > ip[2]){
+                    document.getElementById('q1ans').textContent = `Greatest number is ${ip[0]}`;
+                }
+                else if (ip[0] < ip[1] & ip[1] > ip[2]){
+                    document.getElementById('q1ans').textContent = `Greatest number is ${ip[1]}`;
+                }
+                else {
+                    document.getElementById('q1ans').textContent = `Greatest number is ${ip[2]}`;
+                }
+            }
+    
+            function q2func(){
+                let ip = document.getElementById('2').value.split(" ");
+                let op= [];
+                for (let i = 0; i < ip.length; i++){
+                    if (ip[i].length == 1){
+                        op.push(ip[i])
+                    }
+                    else{
+                        op.push(ip[i][0] + ip[i][1].toUpperCase() + ip[i].slice(2));
+                    }
+                }
+                document.getElementById('q2ans').textContent = op.join(" ");
+            }
+    
+            function q3func(){
+                let ip = document.getElementById('3').value.split(" ");
+                let fno = ip[0];
+                let sno = ip[2];
+                let o = ip [1];
+                if (o.toString() == "+"){
+                    document.getElementById('q3ans').textContent = `The sum of ${fno} and ${sno} is ${parseInt(fno) + parseInt(sno)}`;
+                }
+                else if (o.toString() == "-"){
+                    document.getElementById('q3ans').textContent = `The difference of ${fno} and ${sno} is ${parseInt(fno) - parseInt(sno)}`;
+                }
+                else if (o.toString() == "*"){
+                    document.getElementById('q3ans').textContent = `The product of ${fno} and ${sno} is ${parseInt(fno) * parseInt(sno)}`;
+                }
+                else if (o.toString() == "/"){
+                    document.getElementById('q3ans').textContent = `The quotient of ${fno} and ${sno} is ${parseInt(fno) / parseInt(sno)}`;
+                }
+            }
+    
+            function q4func() {
+                let words = document.getElementById('4').value.split(" ");
+                let smallestWord = words[0];
+                for (let i = 1; i < words.length; i++) {
+                    if (words[i].length < smallestWord.length) {
+                        smallestWord = words[i];
+                    }
+                }
+                document.getElementById('q4ans').textContent = smallestWord;
+        }
+    
+        </script>
+</body>
+</html>

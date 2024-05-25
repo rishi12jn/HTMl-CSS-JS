@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Difference Calculator</title>
+</head>
+<body>
+<h1>Date Difference Calculator</h1>
+<label for="dob">Enter Date of Birth:</label>
+<input type="date" id="dob">
+<button onclick="calculateAge()">Calculate Age</button>
+<p id="result"></p>
+<script>
+function calculateAge() {
+    var dob = new Date(document.getElementById("dob").value);
+    if (isNaN(dob.getTime())) {
+        alert("Please enter a valid date of birth.");
+        return;
+    }
+    var currentDate = new Date();
+    var difference = currentDate.getTime() - dob.getTime();
+    var years = Math.floor(difference / (1000 * 60 * 60 * 24 * 365.25));
+    var months = Math.floor((difference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+    var days = Math.floor((difference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    document.getElementById("result").innerText = "Age: " + years + " years, " + months + " months, " + days + " days.";
+}
+</script>
+</body>
+</html>

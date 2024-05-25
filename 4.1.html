@@ -1,0 +1,148 @@
+<!-- add a css media query and appropriate style so that the web page looks similar even when resized to smaller width specifically the side bar should be hidden; the border should have no padding; the images should not exceed the width of the window; navigation items should be in their own line; the header should be fixed so that it stays at the top after scrolling -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design with Media Queries</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: coral;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: pink;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            left: 0; 
+            margin-top: 0px;
+        }
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 80px auto 0 auto; 
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 60px;b
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: block;
+            margin-bottom: 10px;
+            padding:10px;
+        }
+        .sidebar {
+            margin: 0;
+            padding: 0;
+            width: 200px;
+            background-color: wheat;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: -200px; 
+            overflow: auto;
+            transition: left 0.3s ease-in-out; 
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .sidebar-toggle {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 999; 
+            background-color: wheat;
+            color: #fff;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .sidebar-open .sidebar {
+            left: 0;
+        }
+        .sidebar button {
+            width: 200%;
+            padding: 10px;
+        }
+        nav ul button {
+    background: black;
+    border: 0;
+    color: white;
+    padding: 10px;
+    width: 100%;
+        }
+nav ul button:hover {
+    background-color: #555;
+    color: #fff;
+    transform:scale(1.1)
+}
+        @media only screen and (max-width: 600px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                max-width: 300px;
+                left: -300px; 
+            }
+            .content {
+                width: 100%;
+            }
+            .sidebar-open .sidebar {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Nature</h1>
+</header>
+<div class="container">
+    <input type="checkbox" id="sidebarToggle" class="sidebar-toggle">
+    <label for="sidebarToggle" class="sidebar-toggle" style="font-size: 40px;"> ≡ </label>
+    <div class="sidebar">
+        <nav>
+            <ul>
+                <li><button padding:10px>Home</button></li>
+                <li><button>About us</button></li>
+                <li><button>Contact us</button></li>
+            </ul>
+        </nav>
+    </div>
+    <main class="content">
+        <p>
+            Carol Danvers, also known as Captain Marvel in the Marvel comics, was transformed into a superhero when she was caught in the explosion of an alien Kree device. This event radically reshaped her genetic structure, granting her superhuman abilities such as flight, super-strength, and energy manipulation.</p>
+
+        <h2>Origin Story</h2>
+        <p>
+            Captain America (Steve Rogers) In Comics Powers & Villains ...
+            After being infused with the Super-Soldier serum, Steve Roger's body reached the upper-most limits of human perfection in strength, stamina, agility, and durability. With training, he learned to use these traits in perfect unison in any given situation.</p>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/" style="width: 100%; max-width: 600px; height: auto;">
+        <h2>Nature 2</h2>
+        <p>Captain America is a superhero created by Joe Simon and Jack Kirby who appears in American comic books published by Marvel Comics. The character first appeared in Captain America Comics #1, published on December 20, 1940, by Timely Comics, a corporate predecessor to Marvel. Captain America's civilian identity is Steve Rogers, a frail man enhanced to the peak of human physical perfection by an experimental "super-soldier serum" after joining the United States Army to aid the country's efforts in World War II. Equipped with an American flag-inspired costume and a virtually indestructible shield, Captain America and his sidekick Bucky Barnes clashed frequently with the villainous Red Skull and other members of the Axis powers. In the final days of the war, an accident left Captain America frozen in a state of suspended animation until he was revived in modern times. He resumes his exploits as a costumed hero and becomes leader of the superhero team the Avengers, but frequently struggles as a "man out of time" to adjust to the new era.</p>
+    </main>
+</div>
+<script>
+    document.getElementById('sidebarToggle').addEventListener('change', function() {
+        document.body.classList.toggle('sidebar-open');
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+    <style>
+        #targetElement {
+            width: 200px;
+            height: 200px;
+            background-color:cadetblue;
+        }
+    </style>
+</head>
+<body style="background-color:darkgray ;">
+<div id="targetElement"></div>
+<script>
+    function toggleBackgroundColor() {
+        var element = document.getElementById("targetElement");
+        element.style.backgroundColor = element.style.backgroundColor === "bisque" ? "cadetblue" : "bisque";
+    }
+    document.getElementById("targetElement").addEventListener("click", toggleBackgroundColor);
+    document.getElementById("targetElement").addEventListener("mouseenter", function() {
+        this.style.backgroundColor = "lightgray"; 
+    });
+    document.getElementById("targetElement").addEventListener("mouseleave", function() {
+        this.style.backgroundColor = "cadetblue"; 
+    });
+</script>
+</body>
+</html>
